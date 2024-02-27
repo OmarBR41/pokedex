@@ -1,4 +1,5 @@
 import { API_TOTAL_POKEMON, POKE_API } from "@/lib/constants";
+import { asyncForEach, delayFn, split } from "@/lib/utils";
 import {
   PokemonAPIResponse,
   PokemonDetailsAPIResponseWithUrlAndSpeciesData,
@@ -40,4 +41,30 @@ async function fetchAllPokemon(): Promise<PokemonAPIResponse> {
     .catch((error) => {
       console.error(error);
     });
+}
+
+export async function fetchAllPokemonWithDetails(
+  batchSize = 1,
+  delayMs = 100
+): Promise<PokemonDetailsAPIResponseWithUrlAndSpeciesData[]> {
+  console.log("Fetching Pokemon data...");
+  const allPokemon: PokemonDetailsAPIResponseWithUrlAndSpeciesData[] = [];
+
+  const { results } = await fetchAllPokemon();
+  const batches = split(results, batchSize);
+
+  await asyncForEach(
+    batches,
+    async (batch: PokemonDetailsAPIResponseWithUrlAndSpeciesData[], index) => {
+      console.log(`Batch ${index + 1} / ${batches.length}...`);
+
+      const promises = batch.map(({ url }) => fetchPokemonDetails(url));
+      const pokemon = await Promise.all(promises);
+
+      allPokemon.push(...pokemon);
+      await delayFn(delayMs);
+    }
+  );
+
+  return allPokemon;
 }
