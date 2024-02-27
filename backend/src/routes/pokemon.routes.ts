@@ -1,4 +1,7 @@
-import { getPaginatedPokemon } from "@/controllers/pokemon.controller";
+import {
+  getPaginatedPokemon,
+  getPokemonByIdOrName,
+} from "@/controllers/pokemon.controller";
 
 import { Router } from "express";
 
@@ -27,6 +30,25 @@ router.get("/", async (req, res) => {
       page,
       limit,
     });
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+router.get("/:query", async (req, res) => {
+  try {
+    const { query } = req.params;
+
+    const pokemon = await getPokemonByIdOrName(query);
+
+    if (!pokemon) {
+      res.status(404).send({
+        message: `Pokemon with id or name '${query}' not found`,
+      });
+      return;
+    }
+
+    res.json(pokemon);
   } catch (error) {
     res.send(error);
   }

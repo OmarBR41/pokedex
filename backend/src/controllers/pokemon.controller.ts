@@ -25,3 +25,17 @@ export async function getPaginatedPokemon(
   };
 }
 
+export async function getPokemonByIdOrName(
+  query: string
+): Promise<PokemonType | null> {
+  return Pokemon.findOne({
+    $or: [
+      {
+        id: { $eq: Number(query) || null },
+      },
+      {
+        name: { $eq: query },
+      },
+    ],
+  });
+}
