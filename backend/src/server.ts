@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 
+import { connectToMongo } from "@/config/db";
 import { PORT } from "@/lib/constants";
 
 const app = express();
@@ -26,6 +27,8 @@ app.get("/healthcheck", (_, res) => {
 
 const main = async (): Promise<any> => {
   try {
+    await connectToMongo();
+
     app.listen(app.get("port"), () =>
       console.log(`Server listening on port ${app.get("port")}`)
     );
