@@ -7,6 +7,7 @@ import express from "express";
 
 import { connectToMongo } from "@/config/db";
 import { PORT } from "@/lib/constants";
+import pokemonRoutes from "@/routes/pokemon.routes";
 
 const app = express();
 
@@ -19,11 +20,7 @@ app.use(
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/healthcheck", (_, res) => {
-  res.status(200).send({
-    ok: true,
-  });
-});
+app.use("/api/v1/pokemon", pokemonRoutes);
 
 const main = async (): Promise<any> => {
   try {
