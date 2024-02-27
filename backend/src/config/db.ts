@@ -2,6 +2,7 @@ import { MONGO_URI } from "@/lib/constants";
 import mongoose from "mongoose";
 
 export async function connectToMongo(): Promise<typeof mongoose | null> {
+  console.log("Connecting to DB...");
   const dbName = MONGO_URI.split("/").pop();
 
   return mongoose
