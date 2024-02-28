@@ -2,8 +2,8 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Heart } from "react-feather";
 import styles from "./FavoriteButton.module.css";
 
-export const FavoriteButton = ({ id }: { id: number }) => {
-  const [isFavorite, setIsFavorite] = useLocalStorage(`pokemon-${id}`, false);
+export const FavoriteButton = ({ id }: { id: string }) => {
+  const [isFavorite, setIsFavorite] = useLocalStorage(id, false);
 
   const toggleFavorite = () => {
     setIsFavorite((prev) => !prev);
