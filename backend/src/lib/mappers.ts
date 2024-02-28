@@ -36,12 +36,24 @@ function mapPokemonSprites(sprites: PokemonDetailsAPIResponse["sprites"]) {
         },
       },
       showdown: {
-        back: sprites.other.showdown.back_female,
-        front: sprites.other.showdown.front_female,
-        shiny: {
-          back: sprites.other.showdown.back_shiny_female,
-          front: sprites.other.showdown.front_shiny_female,
+        default: {
+          back: sprites.other.showdown.back_default,
+          front: sprites.other.showdown.front_default,
+          shiny: {
+            back: sprites.other.showdown.back_shiny,
+            front: sprites.other.showdown.front_shiny,
+          },
         },
+        female: Boolean(sprites.other.showdown.back_female)
+          ? {
+              back: sprites.other.showdown.back_female,
+              front: sprites.other.showdown.front_female,
+              shiny: {
+                back: sprites.other.showdown.back_shiny_female,
+                front: sprites.other.showdown.front_shiny_female,
+              },
+            }
+          : null,
       },
     },
   };

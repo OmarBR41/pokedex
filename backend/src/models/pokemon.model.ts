@@ -5,8 +5,9 @@ import {
   PokemonStat,
   PokemonTextEntry,
   PokemonType,
+  Sprite,
 } from "@/types";
-import { model, Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const PokemonAbilitySchema = new Schema<PokemonAbility>({
   ability: {
@@ -17,21 +18,23 @@ const PokemonAbilitySchema = new Schema<PokemonAbility>({
   slot: Number,
 });
 
-const PokemonSpritesSchema = new Schema<PokemonSprites>({
-  default: {
+const SpriteSchema = new Schema<Sprite>({
+  front: { type: String, default: null },
+  back: { type: String, default: null },
+  shiny: {
     front: { type: String, default: null },
     back: { type: String, default: null },
-    shiny: {
-      front: { type: String, default: null },
-      back: { type: String, default: null },
-    },
   },
-  female: {
-    front: { type: String, default: null },
-    back: { type: String, default: null },
-    shiny: {
-      front: { type: String, default: null },
-      back: { type: String, default: null },
+});
+
+const PokemonSpritesSchema = new Schema<PokemonSprites>({
+  default: SpriteSchema,
+  female: SpriteSchema,
+  other: {
+    official_artwork: SpriteSchema,
+    showdown: {
+      default: SpriteSchema,
+      female: SpriteSchema,
     },
   },
 });
