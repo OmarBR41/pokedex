@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #111;
+  border-radius: 0.5rem;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+}
+
+.textContainer {
+  flex: 1;
+}
+
+.id {
+  color: #c2c2c2;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.name {
+  font-weight: 600;
+  text-transform: capitalize;
+}
