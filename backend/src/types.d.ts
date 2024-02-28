@@ -96,6 +96,10 @@ export type PokemonSpeciesAPIResponse = {
       version: Data;
     }
   ];
+  names: {
+    language: Data;
+    name: string;
+  }[];
 };
 
 export type PokemonDetailsAPIResponseWithUrlAndSpeciesData =
@@ -104,6 +108,7 @@ export type PokemonDetailsAPIResponseWithUrlAndSpeciesData =
 // Pokemon Model
 export type Pokemon = {
   id: number;
+  slug: string;
   name: string;
   url: string;
   height?: number;

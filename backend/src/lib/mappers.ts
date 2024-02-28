@@ -66,6 +66,7 @@ export function mapPokemonDataToModel(
     ({
       id,
       name,
+      names,
       url,
       height,
       weight,
@@ -77,7 +78,9 @@ export function mapPokemonDataToModel(
     }) =>
       new PokemonModel({
         id,
-        name,
+        slug: name,
+        name:
+          names.find(({ language }) => language.name === "en")?.name ?? name,
         url,
         height,
         weight,

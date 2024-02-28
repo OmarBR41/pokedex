@@ -73,6 +73,10 @@ const PokemonSchema = new Schema<Pokemon>({
     type: Number,
     required: true,
   },
+  slug: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,

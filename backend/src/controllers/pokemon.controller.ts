@@ -34,7 +34,7 @@ export async function getPokemonByIdOrName(
         id: { $eq: Number(query) || null },
       },
       {
-        name: { $eq: query },
+        slug: { $eq: query },
       },
     ],
   });
