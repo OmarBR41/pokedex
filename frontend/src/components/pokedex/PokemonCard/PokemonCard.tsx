@@ -1,13 +1,10 @@
 import { FavoriteButton } from "@/components/ui/FavoriteButton";
+import { formatPokemonId } from "@/lib/utils";
 import { Pokemon } from "@/types";
 import styles from "./PokemonCard.module.css";
 
 export const PokemonCard = ({ pokemon }: { pokemon: Pokemon }) => {
-  const pokemonId = pokemon.id.toLocaleString("en-US", {
-    minimumIntegerDigits: 4,
-    useGrouping: false,
-  });
-
+  const pokemonId = formatPokemonId(pokemon.id);
   const pokemonUrl = `/${pokemon.slug}`;
 
   return (
@@ -21,12 +18,14 @@ export const PokemonCard = ({ pokemon }: { pokemon: Pokemon }) => {
       </a>
 
       <div className={styles.textContainer}>
-        <small className={styles.id}>#{pokemonId}</small>
-        <p className={styles.name}>{pokemon.name}</p>
+        <small className={styles.id}>{pokemonId}</small>
+        <a href={pokemonUrl} className={styles.name}>
+          {pokemon.name}
+        </a>
       </div>
 
       <div className={styles.favoriteContainer}>
-        <FavoriteButton id={pokemon.id} />
+        <FavoriteButton id={pokemon.slug} />
       </div>
     </article>
   );
