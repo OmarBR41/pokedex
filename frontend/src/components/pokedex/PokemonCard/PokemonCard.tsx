@@ -8,13 +8,18 @@ export const PokemonCard = ({ pokemon }: { pokemon: Pokemon }) => {
     useGrouping: false,
   });
 
+  const pokemonUrl = `/${pokemon.slug}`;
+
   return (
     <article className={styles.container}>
-      <img
-        className={styles.image}
-        src={pokemon.sprites?.other?.official_artwork?.front ?? ""}
-        alt={pokemon.name}
-      />
+      <a href={pokemonUrl}>
+        <img
+          className={styles.image}
+          src={pokemon.sprites?.other?.official_artwork?.front ?? ""}
+          alt={pokemon.name}
+        />
+      </a>
+
       <div className={styles.textContainer}>
         <small className={styles.id}>#{pokemonId}</small>
         <p className={styles.name}>{pokemon.name}</p>

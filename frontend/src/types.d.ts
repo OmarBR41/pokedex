@@ -19,6 +19,7 @@ export type Data = {
 
 export type Pokemon = {
   id: number;
+  slug: string;
   name: string;
   url: string;
   height?: number;

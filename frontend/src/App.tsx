@@ -1,15 +1,12 @@
 import { Header } from "@/components/layout/Header";
-import { Pokedex } from "@/components/pokedex/Pokedex";
 import { QueryProvider } from "@/providers/QueryProvider";
+import { RouterProvider } from "@/providers/RouterProvider";
 
 function App() {
   return (
     <QueryProvider>
       <Header />
-
-      <main>
-        <Pokedex />
-      </main>
+      <RouterProvider />
     </QueryProvider>
   );
 }
