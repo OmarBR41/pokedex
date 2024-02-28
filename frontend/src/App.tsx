@@ -1,7 +1,9 @@
+import { Header } from "@/components/layout/Header";
+
 function App() {
   return (
     <>
-      <header>Pokédex App</header>
+      <Header />
     </>
   );
 }

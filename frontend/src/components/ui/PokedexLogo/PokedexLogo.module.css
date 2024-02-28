@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  color: #f2f2f2;
+  gap: 0.25rem;
+}
+
+.container:hover {
+  color: #ccc;
+}
+
+.image {
+  width: 50px;
+  height: 50px;
+}
+
+.text {
+  font-weight: 700;
+}
