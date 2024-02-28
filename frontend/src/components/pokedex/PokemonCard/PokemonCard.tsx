@@ -1,4 +1,4 @@
-import { FavoriteButton } from "@/components/ui/ FavoriteButton";
+import { FavoriteButton } from "@/components/ui/FavoriteButton";
 import { Pokemon } from "@/types";
 import styles from "./PokemonCard.module.css";
 
