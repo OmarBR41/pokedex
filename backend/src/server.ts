@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 
+import { corsOptionsDelegate } from "@/config/cors";
 import { connectToMongo } from "@/config/db";
 import { PORT } from "@/lib/constants";
 import pokemonRoutes from "@/routes/pokemon.routes";
@@ -18,7 +19,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptionsDelegate));
 
 app.use("/api/v1/pokemon", pokemonRoutes);
 

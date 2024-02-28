@@ -1,5 +1,6 @@
 export const PORT = process.env.PORT || 8080;
 
+export const ALLOWED_DOMAINS = process.env.ALLOWED_DOMAINS?.split(",") || [];
 export const MONGO_URI = process.env.MONGO_URI || "";
 
 export const POKE_API = process.env.POKE_API || "";
