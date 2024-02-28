@@ -1,2 +1,98 @@
 .container {
+  width: 100%;
+  min-width: 320px;
+  background-color: #161618;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  min-height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #f2f2f2;
+}
+
+.id {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(194, 194, 194);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #f2f2f2;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.value {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.description {
+  margin-bottom: 0.5rem;
+}
+
+.typesList {
+  padding-left: 2rem;
+}
+
+.type {
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.buttonsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.buttonArrow {
+  width: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .content {
+    flex-direction: row;
+  }
+
+  .image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .detailsContainer {
+    padding: 1rem 0;
+  }
 }

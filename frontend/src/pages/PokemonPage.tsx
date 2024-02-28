@@ -5,14 +5,17 @@ import { useParams } from "react-router-dom";
 
 export const PokemonPage = () => {
   const { query } = useParams();
-  const { isLoading, data } = useQuery("findPokemon", () =>
+  const { isLoading, isError, data } = useQuery(["findPokemon", query], () =>
     fetchPokemon(query ?? "")
   );
 
-  return (
-    <main>
-      {isLoading && <p>Loading...</p>}
-      {!!data?.pokemon && <PokemonDetails pokemon={data?.pokemon} />}
-    </main>
-  );
+  if (isLoading) {
+    return <p>Searching Pokemon...</p>;
+  }
+
+  if (isError || !data?.pokemon) {
+    return <p>No Pokemon found with ID or query '{query}'</p>;
+  }
+
+  return <PokemonDetails pokemon={data?.pokemon} />;
 };

@@ -7,3 +7,13 @@ export function parseJSON<T>(value: string | null): T | undefined {
     return undefined;
   }
 }
+
+export function formatPokemonId(id: number): string {
+  return (
+    "#" +
+    id.toLocaleString("en-US", {
+      minimumIntegerDigits: 4,
+      useGrouping: false,
+    })
+  );
+}
