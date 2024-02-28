@@ -1,3 +1,4 @@
+import { Layout } from "@/components/layout/Layout";
 import ErrorPage from "@/pages/ErrorPage";
 import { Home } from "@/pages/Home";
 import { PokemonPage } from "@/pages/PokemonPage";
@@ -8,13 +9,18 @@ import {
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/:query",
-    element: <PokemonPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/:query",
+        element: <PokemonPage />,
+      },
+    ],
   },
 ]);
 
