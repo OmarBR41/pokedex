@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  align-items: center;
+  color: #f2f2f2;
+  padding: 0.5rem 0.25rem;
+}
+
+.container:hover {
+  color: #ccc;
+}
