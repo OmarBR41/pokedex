@@ -72,3 +72,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+}
