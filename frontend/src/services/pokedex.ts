@@ -17,7 +17,7 @@ export async function fetchPokemon(
   query: string | number
 ): Promise<APIGetPokemonResponse> {
   try {
-    const res = await fetch(`${POKEMON_API_URL}/pokemon/${query}`);
+    const res = await fetch(`${POKEMON_API_URL}/${query}`);
     return res.json();
   } catch (err) {
     console.error(err);
