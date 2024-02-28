@@ -17,7 +17,7 @@
 }
 
 .id {
-  color: #c2c2c2;
+  color: rgb(194, 194, 194);
   font-weight: 700;
   text-transform: capitalize;
 }
@@ -25,4 +25,8 @@
 .name {
   font-weight: 600;
   text-transform: capitalize;
+}
+
+.favoriteContainer {
+  padding: 0.25rem;
 }

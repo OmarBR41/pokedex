@@ -1,0 +1,17 @@
+.heartIcon {
+  width: 1.25rem;
+  color: #c2c2c2;
+  cursor: pointer;
+}
+
+.heartIcon:not(.heartIconFilled):hover {
+  fill: rgba(194, 194, 194, 0.25);
+}
+
+.heartIconFilled {
+  fill: #c2c2c2;
+}
+
+.heartIconFilled:hover {
+  color: rgba(194, 194, 194, 0.25);
+}
