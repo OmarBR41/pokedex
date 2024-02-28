@@ -48,7 +48,7 @@ router.get("/:query", async (req, res) => {
       return;
     }
 
-    res.json(pokemon);
+    res.json({ pokemon });
   } catch (error) {
     res.send(error);
   }
