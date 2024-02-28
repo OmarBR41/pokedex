@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
       pokemon,
       count,
       totalPages,
-      page,
+      page: page > totalPages ? totalPages : page,
       limit,
     });
   } catch (error) {

@@ -11,12 +11,13 @@ export async function getPaginatedPokemon(
   page: number,
   limit: number
 ): Promise<PaginatedPokemonRes> {
-  const offset = (page - 1) * limit;
+  const count = await Pokemon.countDocuments();
+  const totalPages = Math.ceil(count / limit);
+
+  const p = page > totalPages ? totalPages : page;
+  const offset = (p - 1) * limit;
 
   const pokemon = await Pokemon.find({}, undefined, { skip: offset, limit });
-  const count = await Pokemon.countDocuments();
-
-  const totalPages = Math.ceil(count / limit);
 
   return {
     pokemon,
