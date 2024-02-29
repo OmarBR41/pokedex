@@ -2,7 +2,12 @@ import { fetchAllPokemon } from "@/services/pokedex";
 import { useQuery } from "react-query";
 
 import { Pagination } from "@/components/ui/Pagination";
-import { DEFAULT_API_LIMIT, DEFAULT_API_PAGE } from "@/lib/constants";
+import { Select } from "@/components/ui/Select";
+import {
+  DEFAULT_API_LIMIT,
+  DEFAULT_API_PAGE,
+  LIMIT_OPTIONS,
+} from "@/lib/constants";
 import { useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { PokemonList } from "../PokemonList";
@@ -41,14 +46,35 @@ export const Pokedex = () => {
     [totalPages, limitParam, setSearchParams]
   );
 
+  const handleLimitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newLimit = e.target.value;
+
+    setSearchParams({
+      ...(pageParam && {
+        page: String(pageParam),
+      }),
+      ...(Number(newLimit) > 0 && { limit: String(newLimit) }),
+    });
+  };
+
+  const firstIndex = pokemonArray[0]?.id ?? "...";
+  const lastIndex = pokemonArray[pokemonArray.length - 1]?.id ?? "...";
+  const count = data?.count ?? "...";
+
   return (
     <section className={styles.container}>
-      {/* <header className={styles.header}>
-        <select>
-          <option># ID</option>
-          <option>Name</option>
-        </select>
-      </header> */}
+      <header className={styles.header}>
+        <p className={styles.headerText}>
+          Showing #{firstIndex} - #{lastIndex} from {count} total Pokémon
+        </p>
+
+        <Select
+          label="Limit"
+          value={limitParam}
+          options={LIMIT_OPTIONS}
+          onChange={handleLimitChange}
+        />
+      </header>
 
       {isLoading && <p>Loading...</p>}
       {pokemonArray && <PokemonList pokemonList={pokemonArray} />}
