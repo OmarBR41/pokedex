@@ -1,0 +1,13 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.select {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
